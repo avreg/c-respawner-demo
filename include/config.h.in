@@ -1,0 +1,62 @@
+#ifndef _RESPAWNER_CONFIG_H_
+#define _RESPAWNER_CONFIG_H_ 1
+
+/* global defines */
+
+#cmakedefine DEBUG_BUILD
+
+#ifndef HAVE_SYS_TIME_H
+#cmakedefine HAVE_SYS_TIME_H
+#endif
+
+#ifndef HAVE_SYS_EPOLL_H
+#cmakedefine HAVE_SYS_EPOLL_H
+#endif
+
+#ifndef HAVE_SYS_SIGNALFD_H
+#cmakedefine HAVE_SYS_SIGNALFD_H
+#endif
+
+#ifndef HAVE_SYS_TIMERFD_H
+#cmakedefine HAVE_SYS_TIMERFD_H
+#endif
+
+#ifndef HAVE_SYS_PRCTRL_H
+#cmakedefine HAVE_SYS_PRCTRL_H
+#endif
+
+#ifndef HAVE_SYS_RESOURCE_H
+#cmakedefine HAVE_SYS_RESOURCE_H
+#endif
+
+#ifndef HAVE_SETRLIMIT
+#cmakedefine HAVE_SETRLIMIT
+#endif
+
+#ifndef HAVE_PRCTL
+#cmakedefine HAVE_PRCTL
+#endif
+
+#ifndef HAVE_STRUCT_UCRED
+#cmakedefine HAVE_STRUCT_UCRED
+#endif
+
+#ifndef STRUCT_UCRED
+#cmakedefine STRUCT_UCRED
+#endif
+
+#define PROJECT_NAME "@PROJECT_NAME@"
+#define PROJECT_VERSION_MAJOR "@PROJECT_VERSION_MAJOR@"
+#define PROJECT_VERSION_MINOR "@PROJECT_VERSION_MINOR@"
+#define PROJECT_VERSION_PATCH "@PROJECT_VERSION_PATCH@"
+#define PROJECT_VERSION "@PROJECT_VERSION@"
+
+#define PROJECT_DESCRIPTION "@PROJECT_DESCRIPTION@"
+
+#define CLOSE_FDESCRIPTOR(des)                                                 \
+    do {                                                                       \
+        if ((des) >= 0)                                                        \
+            close((des));                                                      \
+    } while (0)
+
+#endif // _RESPAWNER_CONFIG_H_

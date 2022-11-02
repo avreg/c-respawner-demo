@@ -1,0 +1,15 @@
+# Debian 10 Buster
+cmake_minimum_required(VERSION 3.13.4)
+
+get_filename_component ( SUBDIR_BASENAME ${CMAKE_CURRENT_SOURCE_DIR} NAME )
+set ( TLIB "${SUBDIR_BASENAME}" )
+
+file ( GLOB ${SUBDIR_BASENAME}_HEADERS
+   ${CMAKE_CURRENT_SOURCE_DIR}/*.h
+)
+file ( GLOB ${SUBDIR_BASENAME}_SOURCES
+   ${CMAKE_CURRENT_SOURCE_DIR}/*.c
+)
+
+add_library ( ${TLIB} OBJECT ${${SUBDIR_BASENAME}_HEADERS} ${${SUBDIR_BASENAME}_SOURCES} )
+unset ( TLIB )
