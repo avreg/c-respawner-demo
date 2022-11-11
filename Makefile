@@ -12,10 +12,13 @@ prepare:
 build: prepare
 	@cmake --build "build" -j $(NPROCS)
 
+test: build
+	make -C "build" test
+
 clean:
 	@rm -fR ./build
 
 all: build
 
-.PHONY: all clean prepare build
+.PHONY: all clean prepare build test
 .DEFAULT_GOAL := all

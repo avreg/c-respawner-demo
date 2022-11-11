@@ -62,3 +62,7 @@ message("CMAKE_REQUIRED_DEFINITIONS: "  ${CMAKE_REQUIRED_DEFINITIONS})
 
 add_subdirectory(include)
 add_subdirectory(src)
+
+include (CTest)
+add_subdirectory (Unity)
+add_subdirectory(test)
