@@ -36,13 +36,19 @@
 # Ubuntu/Debian
 sudo apt-get install build-essential cmake
 
-git clone https://github.com/avreg/c-respawner-demo.git
+git clone --recurse-submodules https://github.com/avreg/c-respawner-demo.git
 cd c-respawner-demo
 
 make
 ```
 
-Очистка:
+#### Тесты:
+
+```bash
+make test
+```
+
+#### Очистка:
 
 ```bash
 make clean
@@ -245,7 +251,6 @@ Nov  2 13:49:26 office respawner[1501092]: stopped
 ## TODO
 
 * прогнать valgrind-ом;
-* добавить в сборку функциональные тесты;
 * debian/rpm package.
 
 Прим.: не могу и не хочу больше затягивать и тратить своё и ваше время, поэтому тесты и пакеты сделаю если только:
