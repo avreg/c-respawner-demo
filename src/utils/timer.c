@@ -78,7 +78,7 @@ int handleTimerEvents(int timer_fdes, uint32_t events)
 
 static int timer_set(int timer_fdes, int epoll_fdes, unsigned int timeot_sec)
 {
-    struct epoll_event ev;
+    struct epoll_event ev = {0};
     struct itimerspec new_value;
 
     memset(&new_value, 0, sizeof(new_value));

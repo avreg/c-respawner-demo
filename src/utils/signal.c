@@ -31,7 +31,7 @@ int initSignal(int epoll_fdes)
 {
     int fd;
     sigset_t mask;
-    struct epoll_event ev;
+    struct epoll_event ev = {0};
 
     sigemptyset(&mask);
     sigaddset(&mask, SIGINT);
