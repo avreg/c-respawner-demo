@@ -46,11 +46,11 @@ pid_t readPidFile(const char *pidfilepath)
 
     if (NULL != (f = fopen(pidfilepath, "r"))) {
         if (1 != fscanf(f, "%d", &pid)) {
-            syslog(LOG_ERR, "could't read pid from \"%s\" pidfile\n", pidfilepath);
+            syslog(LOG_ERR, "couldn't read pid from \"%s\" pidfile\n", pidfilepath);
         }
         fclose(f);
     } else {
-        syslog(LOG_ERR, "could't open \"%s\" pidfile -> %s\n", pidfilepath,
+        syslog(LOG_ERR, "couldn't open \"%s\" pidfile -> %s\n", pidfilepath,
                strerror(errno));
     }
     return pid;
