@@ -105,7 +105,7 @@ static bool signal_callback(const struct signalfd_siginfo *siginfo)
     return IS_CONTINUE_RESPAWN;
 } // signal_callback()
 
-int main(int argc, char *argv[], char *envp[])
+int main(int argc, char *argv[] /*,  char *envp[] */)
 {
     int self_exit_status = EXIT_FAILURE;
 
@@ -163,7 +163,7 @@ int main(int argc, char *argv[], char *envp[])
         }
 
     status_stop_exiting:
-        freeConf(&conf);
+        // freeConf(&conf);
         exit(self_exit_status);
     }
 
@@ -277,7 +277,7 @@ laFinite:
     CLOSE_FDESCRIPTOR(signal_fdes);
     CLOSE_FDESCRIPTOR(epoll_fdes);
 
-    freeConf(&conf);
+    // freeConf(&conf);
 
     respawnerPidFileDelete();
 
