@@ -33,8 +33,21 @@ deb-source:
 deb-clean:
 	fakeroot debian/rules clean
 
+rpm: rpm-toolkit rpm-binary rpm-clean
+
+rpm-toolkit:
+	sudo dnf install cmake gcc rpm-build rpm-devel rpmlint make python bash coreutils diffutils patch rpmdevtools
+	rpmdev-setuptree
+
+rpm-binary:
+	rpmbuild -bb --clean --build-in-place ./c-respawner-demo.spec
+
+rpm-clean: clean
 
 all: build
 
-.PHONY: all clean prepare build test ${deb}
+.PHONY: all clean prepare build test
+.PHONY: deb deb-toolkit deb-binary deb-source deb-clean
+.PHONY: rpm rpm-toolkit rpm-binary rpm-clean
+
 .DEFAULT_GOAL := all
