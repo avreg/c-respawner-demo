@@ -18,7 +18,23 @@ test: build
 clean:
 	@rm -fR ./build
 
+
+deb: deb-toolkit deb-binary deb-source deb-clean
+
+deb-toolkit:
+	sudo apt install build-essential cmake
+
+deb-binary:
+	DEB_BUILD_OPTIONS="nocheck" dpkg-buildpackage -us -uc -b
+
+deb-source:
+	dpkg-buildpackage -us -uc -S
+
+deb-clean:
+	fakeroot debian/rules clean
+
+
 all: build
 
-.PHONY: all clean prepare build test
+.PHONY: all clean prepare build test ${deb}
 .DEFAULT_GOAL := all

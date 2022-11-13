@@ -1,0 +1,26 @@
+Source: c-respawner-demo
+Section: utils
+Priority: optional
+Maintainer: Andrey Nikitin <support@avreg.net>
+Build-Depends: debhelper-compat (= 12),
+    dpkg-dev (>= 1.16.1~),
+    libc6-dev (>= 2.7),
+    cmake (>= 3.13.4)
+Standards-Version: 4.5.1
+Homepage: https://github.com/avreg/c-respawner-demo
+Vcs-Browser: https://github.com/avreg/c-respawner-demo
+Vcs-Git: https://github.com/avreg/c-respawner-demo.git
+Rules-Requires-Root: no
+
+Package: c-respawner-demo
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: pure C-lang respawner demo
+ Respawns a single or executable daemon process.
+ .
+ Support:
+   * respawn limit (max attempt) ,
+   * respawn timeout,
+   * success exit status list,
+   * pidfile.
+
