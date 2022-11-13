@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.13.4)
 
 project (
-   respawner
+   c-respawner-demo
    VERSION 0.1.0
    DESCRIPTION "C-example of respawner for any process"
    LANGUAGES C

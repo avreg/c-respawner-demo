@@ -1,4 +1,4 @@
 #!/bin/sh
 
-./build/src/respawner \
+./build/src/c-respawner-demo \
     start ./test/mock/simple.sh -- 1 3

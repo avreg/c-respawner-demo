@@ -3,7 +3,7 @@
 set -x
 set -e
 
-RESPAWNER_BIN="../../src/respawner"
+RESPAWNER_BIN="../../src/c-respawner-demo"
 SINGLE_PROC="@PROJECT_SOURCE_DIR@/test/mock/forever.sh"
 cat $SINGLE_PROC
 

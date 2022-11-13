@@ -1,4 +1,4 @@
 #!/bin/sh
 
-./build/src/respawner \
+./build/src/c-respawner-demo \
     start ./test/mock/forever.sh

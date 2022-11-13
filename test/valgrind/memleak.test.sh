@@ -17,4 +17,4 @@ valgrind \
     --show-reachable=no \
     --show-below-main=yes \
     $ADDONS_OPT \
-    build/src/respawner -D start test/mock/forever.sh
+    build/src/c-respawner-demo -D start test/mock/forever.sh
