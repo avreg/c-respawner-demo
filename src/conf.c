@@ -10,6 +10,7 @@
 #include <respawner-config.h>
 #endif
 
+#include <assert.h>
 #include <libgen.h>
 #include <limits.h>
 #include <stddef.h>
@@ -33,12 +34,19 @@
 } while (0);
 // clang-format on
 
-
 static enum APP_COMMAND parseCommand(const char *arg);
 static void printUsage(const char *argv0);
 static void parseSuccessExitStatus(const char *optarg, conf_t *conf);
 
-void freeConf(conf_t *conf) {}
+#if 0
+void freeConf(conf_t *conf)
+{
+    assert(conf);
+    if (conf->child.base_name) {
+        free(conf->child.base_name);
+    }
+} // freeConf()
+#endif
 
 bool getConf(int argc, char *argv[], conf_t *conf)
 {
@@ -59,7 +67,8 @@ bool getConf(int argc, char *argv[], conf_t *conf)
             {"help", 0, 0, 'h'},
             {0}};
 
-        opt = getopt_long(argc, argv, "Dhn:t:e:p::", long_options, &option_index);
+        opt =
+            getopt_long(argc, argv, "Dhn:t:e:p::", long_options, &option_index);
         if (0 > opt) {
             break;
         }
@@ -107,7 +116,9 @@ bool getConf(int argc, char *argv[], conf_t *conf)
             } else {
                 conf->child.path_name = non_opt_arg;
             }
-            conf->child.base_name = basename(conf->child.path_name);
+            char *buf = strdup(conf->child.path_name);
+            assert(buf);
+            conf->child.base_name = basename(buf); // FIXME: valgring possibly lost warning
             conf->child.argv[0] = non_opt_arg;
             conf->child.argc = 1;
         } else {
@@ -151,6 +162,10 @@ static enum APP_COMMAND parseCommand(const char *arg)
 
 static void printUsage(const char *argv0)
 {
+    assert(argv0);
+    char *argv0_copy = strdup(argv0);
+    assert(argv0_copy);
+
     // clang-format off
     fprintf(stderr,
             "Usage: %s [options] start|stop|status child-pathname "
@@ -164,8 +179,9 @@ static void printUsage(const char *argv0)
             "  -e|--success-exit-status LIST  CSV list of success\n"
             "                                 exit status codes\n"
             "\n",
-            basename((char *)argv0));
+            basename(argv0_copy));
     // clang-format on
+    free(argv0_copy);
 } // printUsage()
 
 static void parseSuccessExitStatus(const char *optarg, conf_t *conf)

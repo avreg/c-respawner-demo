@@ -55,7 +55,7 @@ typedef struct conf_s {
 
 } conf_t;
 
-static inline char *getCommandName(enum APP_COMMAND cmd)
+static inline const char *getCommandName(enum APP_COMMAND cmd)
 {
     switch (cmd) {
     case COMM_START:
@@ -79,7 +79,7 @@ static inline char *getCommandName(enum APP_COMMAND cmd)
  * @return false  ошибка
  */
 bool getConf(int argc, char *argv[], conf_t *conf);
-void freeConf(conf_t *conf);
+// void freeConf(conf_t *conf);
 
 bool isProcSuccessExitStatus(const conf_t *conf, int status);
 
