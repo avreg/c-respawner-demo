@@ -115,6 +115,9 @@ bool onDaemonCHLD(const conf_t *conf, const struct signalfd_siginfo *siginfo)
         }
 
         break;
+    default:
+        // CLD_STOPPED | CLD_CONTINUED
+        return true;
     }
     return true;
 } // onDaemonCHLD()
