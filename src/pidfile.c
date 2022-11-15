@@ -77,7 +77,11 @@ doLock:
 
     char buf[20];
     int buflen = snprintf(buf, sizeof(buf), "%d\n", pid);
-    ssize_t wrote = write(lockFd, buf, buflen);
+    if (buflen < 2 || (size_t)buflen >= sizeof(buf)) {
+        syslog(LOG_ERR, "is pit_t really int? :)");
+        return false;
+    }
+    ssize_t wrote = write(lockFd, buf, (size_t)buflen);
     if (buflen != wrote) {
         syslog(LOG_ERR, "write(%s) failed -> %s", pidFileAbsName,
                strerror(errno));

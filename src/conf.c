@@ -78,10 +78,12 @@ bool getConf(int argc, char *argv[], conf_t *conf)
             conf->daemonize = false;
             break;
         case 'n':
-            conf->respawn.max = atoi(optarg);
+            // TODO: use valid range check
+            conf->respawn.max = strtoul(optarg, NULL, 10);
             break;
         case 't':
-            conf->respawn.timeout = atoi(optarg);
+            // TODO: use valid range check
+            conf->respawn.timeout = strtoul(optarg, NULL, 10);
             break;
         case 'p':
             optionalArg = argv[optind];
