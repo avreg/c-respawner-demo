@@ -80,6 +80,8 @@ target_compile_options(${PROJECT_NAME}
             -Wvariadic-macros
             -Wvolatile-register-var
             -Wmissing-prototypes
+            -Wsign-conversion
+            -Wswitch-default
             -Werror
             -Wall
             -Wextra
