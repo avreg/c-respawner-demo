@@ -26,7 +26,7 @@
 ```
 Язык: C(std11).
 Система сборки: cmake/make (Makefile - враппер для запуска cmake с параметрами).
-Компилятор: gdb.
+Компилятор: gсс/clang.
 ОС: Debian GNU/Linux 11 (bullseye).
 ```
 
